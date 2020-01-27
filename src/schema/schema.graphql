@@ -1,0 +1,27 @@
+type Query {
+  getNumbers: Game
+}
+
+type Game {
+  id: String
+  orange: Int!
+  blue: Int!
+}
+
+# type Query {
+#   getNumbers: (blue: Int!, orange: Int): [Int]
+# }
+
+# type Mutation {
+#   updateGame(input: gameResult!): ReserveDealPayload
+# }
+
+# input gameResult {
+#   id: String!
+#   orange: Boolean!
+#   blue: Boolean!
+# }
+
+# type ReserveDealPayload {
+#   result: Boolean
+# }
