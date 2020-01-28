@@ -27,9 +27,9 @@ httpServer.listen(
   { port: 4000 },
   (): void => {
     mongoose.connect(dbURL, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology:true
-    });
-    console.log('server start');
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    })
+    .then(() => console.log('DB Connected!'))
+    .catch(err => { console.log(Error, err.message);});
   });
