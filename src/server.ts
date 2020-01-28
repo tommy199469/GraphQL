@@ -5,9 +5,11 @@ import { createServer } from 'http';
 import compression from 'compression';
 import cors from 'cors';
 import schema from './schema';
+import mongoose from 'mongoose';
 
 
 const app = express();
+const dbURL = 'mongodb+srv://testing:password123123123@cluster0-oxup0.mongodb.net/test?retryWrites=true&w=majority'
 
 const server = new ApolloServer({
   schema,
@@ -23,4 +25,8 @@ const httpServer = createServer(app);
 
 httpServer.listen(
   { port: 4000 },
-  (): void => console.log(`\n🚀      GraphQL is now running on http://localhost:3000/graphql`));
+  (): void => {
+    mongoose.connect(dbURL, {useNewUrlParser: true , useUnifiedTopology : true});
+    mongoose.set('useCreateIndex', true);
+    console.log('server start');
+  });
