@@ -3,11 +3,11 @@ type Query {
 }
 
 type Game {
-  id: Int!
+  id: String!
   orange: Int!
   blue: Int!
 }
 
 type Mutation {
-  upateGame(id: Int!, blue: Int!, orange: Int!): Game!
+  updateGame(id: String!, blue: Int!, orange: Int!): Game!
 }

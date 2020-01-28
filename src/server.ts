@@ -26,7 +26,10 @@ const httpServer = createServer(app);
 httpServer.listen(
   { port: 4000 },
   (): void => {
-    mongoose.connect(dbURL, {useNewUrlParser: true , useUnifiedTopology : true});
-    mongoose.set('useCreateIndex', true);
+    mongoose.connect(dbURL, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology:true
+    });
     console.log('server start');
   });

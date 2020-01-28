@@ -1,3 +1,13 @@
 type Query {
-  helloWorld: String!
+  getNumbers: Game
+}
+
+type Game {
+  id: Int!
+  orange: Int!
+  blue: Int!
+}
+
+type Mutation {
+  upateGame(id: Int!, blue: Int!, orange: Int!): Game!
 }

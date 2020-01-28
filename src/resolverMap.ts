@@ -5,14 +5,15 @@ import gameModel from './mongodb'
 
 const resolverMap: IResolvers = {
   Query: {
-    getNumbers: async(_: void, args: void): Promise<{id: Number; blue: Number; orange: Number;}> => {
+    getNumbers: async(_: void, args: void): Promise<{ blue: Number; orange: Number;}> => {
       let game = await gameModel.findOne({}, {}, { sort: { 'created_at' : -1 } })
-      return game ? game : {id:0 ,blue:0 , orange:0 };
+      return game ? game : {blue:0 , orange:0 };
     }
   },
   Mutation: {
-    upateGame : async(_: void, args: {id: Number , blue: Number , orange: Number}): Promise<{id: Number; blue: Number; orange: Number;}>  => {
+    updateGame : async(_: void, args: {id: String , blue: Number , orange: Number}): Promise<{id: String; blue: Number; orange: Number;}>  => {
       let {id , blue , orange} = args
+      console.log('args' , args);
       let game = await  gameModel.findOneAndUpdate({id: id} , { blue , orange}, {
         new: true,
         upsert: true
