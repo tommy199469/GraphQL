@@ -11,3 +11,7 @@ type Game {
 type Mutation {
   updateGame(id: String!, blue: Int!, orange: Int!): Game!
 }
+
+type Subscription {
+  gameUpdated: Game
+}

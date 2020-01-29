@@ -1,7 +1,10 @@
 // resolverMap.ts
 import { IResolvers } from 'graphql-tools';
 import gameModel from './mongodb'
+import { PubSub } from 'apollo-server-express'
 
+
+let pubsub = new PubSub()
 
 const resolverMap: IResolvers = {
   Query: {
@@ -18,10 +21,21 @@ const resolverMap: IResolvers = {
         new: true,
         upsert: true
       })
+      
+      pubsub.publish('gameUpdated', { gameUpdated :game })
       return game;
     }
   },
+  Subscription : {
+    gameUpdated: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('gameUpdated')
+    },
+  }
+
 };
 
 
-export default resolverMap;
+export default {
+  resolverMap,
+  pubsub
+};
