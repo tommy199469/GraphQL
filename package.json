@@ -30,7 +30,7 @@
     "graphql-import": "^0.7.1",
     "graphql-import-node": "0.0.4",
     "nodemon": "^2.0.2",
-    "ts-loader": "^6.2.1",
+    "ts-loader": "^9.4.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
